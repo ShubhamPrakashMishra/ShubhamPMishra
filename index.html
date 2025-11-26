@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubham Prakash Mishra | Systems Engineering Professional</title>
+
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <!-- Main React Application -->
+    <script type="text/babel" data-presets="react">
+        const { useState, useEffect, useRef } = React;
+
+        // --- Data Source ---
+        const profileData = {
+            profile: {
+                name: "Shubham Prakash Mishra",
+                role: "Systems Engineering Professional",
+                location: "Naples, Italy",
+                email: "shubham24prakash@gmail.com",
+                phone: "(+39) 3444845951",
+                linkedin: "https://www.linkedin.com/in/shubham-mishra-11732639a/",
+                cvLink: "#"
+            },
+            summary: "Passionate Automation and Systems Engineering professional with extensive experience across Automotive, Mechatronics,Software Areas. Currently pursuing a Research approach on exploring Agile Scrum with a MBSE and system agility for mechatronic development of Robot Prototype. Skilled in System Engineering, Agile/Scrum/MBSE Planning, JavaScript, Python, System Engineering Tools,  MATLAB/Simulink, SQL, and Agile frameworks. Committed to creating adaptive, high-reliability systems that connect System engineering with innovation and development Pace of evolving Industry.",
+            skills: [
+                {
+                    category: "Languages & Scripting",
+                    items: ["Sysml","Javascript","Python", "SQL", "MATLAB/Simulink"]
+                },
+                {
+                    category: "Testing & Automation",
+                    items: ["Performance Testing Tools", "Postman", "API Testing", "Regression Testing", "Automation Testing"]
+                },
+                {
+                    category: "Methodologies",
+                    items: ["Agile", "Scrum+", "MBSE (Model-Based Systems Engineering)", "REMAC Framework"]
+                },
+                {
+                    category: "Tools",
+                    items: ["System Modeler","Trello","JIRA", "Git", "Jenkins", "Microsoft Test Frameworks"]
+                }
+            ],
+            experience: [
+                {
+                    role: "Automation System Engineering Intern",
+                    company: "ISAE Supmeca",
+                    period: "September 2024 – Present",
+                    location: "Paris, France",
+                    description: "Working as part of an innovative research team focused on agile systems engineering methodologies for mechatronic applications in Industry 4.0 environments.",
+                    highlights: [
+                        "Collaborating within a 12-member Working Group on Agility for Mechatronics, developing and validating agile systems engineering approaches for Industry 4.0 applications.",
+                        "Applying REMAC Framework and Scrum++ methodologies to improve requirement management and system adaptability for mechatronic systems.",
+                        "Supporting the automatized mobile robot prototype project and contributing to nanosatellite modeling, bridging MBSE and Agile research for advanced autonomous systems.",
+                        "Conducting experimental validation of agile MBSE approaches through iterative prototyping and testing cycles.",
+                        "Contributing to academic research publications on the integration of agility principles in systems engineering for mechatronic development."
+                    ],
+                    technologies: ["System Engineering","Research,Validation and System Planning for robot development", "MBSE Tools", "Agile Frameworks", "SysMl Modeling", "Robot Prototyping and Development"]
+                },
+                {
+                    role: "Quality Automation Engineer",
+                    company: "Coforge LTD.",
+                    period: "June 2022 – October 2023",
+                    location: "Remote, India",
+                    description: "Lead automation initiatives for automotive software testing, implementing comprehensive test frameworks to ensure quality and compliance in the team of Quality Testing by supervising Functional Team and automating and Planning Of Manual Test scenarios for Embedded Systems.",
+                    highlights: [
+                        "Reduced validation time by 80% through strategic implementation of automated regression and sanity testing frameworks across multiple automotive software modules.",
+                        "Integrated test automation with Agile sprint cycles, significantly improving delivery speed and product reliability.",
+                        "Lead performance testing and database validation initiatives for embedded vehicle systems, ensuring compliance with automotive safety standards (ISO 26262).",
+                        "Developed data-driven automated test suites using Microsoft Test Frameworks, enhancing web service integration in next-generation automotive systems.",
+                        "Implemented CI/CD pipelines using Jenkins for automated test execution and reporting.",
+                        "Mentored junior QA engineers on automation best practices and test-driven development methodologies.",
+                        "Collaborated with cross-functional teams including development, product management, and system engineers to define comprehensive test strategies."
+                    ],
+                    technologies: ["Selenium", "Python", "Jenkins", "SQL", "Microsoft Test Framework", "JIRA", "Git"]
+                },
+                {
+                    role: "Senior Quality Engineer",
+                    company: "Hyyperlink A2 Infotech",
+                    period: "August 2021 – May 2022",
+                    location: "Jaipur, India",
+                    description: "Managed comprehensive quality assurance processes for enterprise software solutions, focusing on test automation and quality metrics improvement.",
+                    highlights: [
+                        "Designed and implemented comprehensive automated and manual test cases across multiple Agile development platforms.",
+                        "Managed end-to-end test planning, execution tracking, and defect lifecycle management for enterprise software solutions.",
+                        "Collaborated with cross-functional teams to ensure quality standards aligned with Industry 4.0 best practices.",
+                        "Established and maintained quality metrics dashboards for stakeholder reporting.",
+                        "Led test case review sessions and contributed to continuous improvement of QA processes.",
+                        "Implemented risk-based testing approaches to optimize testing efforts and maximize defect detection."
+                    ],
+                    technologies: ["Test Automation Tools", "Agile Methodologies", "Defect Tracking Systems", "Quality Metrics"]
+                },
+                {
+                    role: "Software Quality Engineer",
+                    company: "Vidclub Entertainment",
+                    period: "October 2020 – June 2021",
+                    location: "New Delhi, India",
+                    description: "Performed comprehensive quality assurance for streaming platform services, focusing on API testing and full lifecycle quality management.",
+                    highlights: [
+                        "Executed comprehensive manual test cases and performed API validation testing using Postman for streaming platform services.",
+                        "Supported full SDLC/STLC documentation and facilitated cross-team coordination for quality assurance initiatives.",
+                        "Created detailed test plans, scripts, and use cases to support continuous quality improvement objectives.",
+                        "Conducting functional, regression, and smoke testing for web and mobile applications.",
+                        "Participated in requirement analysis sessions to identify testability concerns early in the development cycle."
+                    ],
+                    technologies: ["Postman", "API Testing", "Manual Testing", "Test Documentation"]
+                },
+                {
+                    role: "Associate Engineer",
+                    company: "Lucas Automotive Pvt. Ltd",
+                    period: "01/04/2016 – 30/09/2017",
+                    location: "Jaipur, India",
+                    description: "Supported product validation and mechanical testing in automotive systems.",
+                    highlights: [
+                        "Supported product validation and mechanical testing in automotive systems.",
+                        "Perform the maintenance of automotive systems at customer ends."
+                    ],
+                    technologies: ["Product Validation", "Mechanical Testing", "Automotive Systems", "Maintenance"]
+                },
+                {
+                    role: "Diploma Trainee Engineer (DET)",
+                    company: "Tata Motors",
+                    period: "10/06/2015 – 24/12/2015",
+                    location: "Pune, India",
+                    description: "Assisted in component quality inspections in Quality Department after production process improvement.",
+                    highlights: [
+                        "Assisted in component quality inspections in Quality Department after production of Mechanical Automobile Parts process for improvement.",
+                        "Maintain Quality Processes across the Production and development lines in Industry and Data Sheet in the Department."
+                    ],
+                    technologies: ["Quality Inspection", "Process Improvement", "Data Management", "Quality Control"]
+                }
+            ],
+            education: [
+                {
+                    degree: "Master of Engineering",
+                    field: "Autonomous Vehicle Engineering",
+                    school: "University of Naples Federico II (UNINA)",
+                    location: "Naples, Italy",
+                    year: "2023 - Present"
+                },
+                {
+                    degree: "Bachelor of Technology",
+                    field: "Mechanical Engineering",
+                    school: "Rajasthan Technical University (RTU)",
+                    location: "Rajasthan, India",
+                    year: "2017 - 2020"
+                }
+            ]
+        };
+
+        // Custom Hook for Scroll Animations
+        const useScrollAnimation = () => {
+            const [isVisible, setIsVisible] = useState(false);
+            const ref = useRef(null);
+
+            useEffect(() => {
+                const observer = new IntersectionObserver(
+                    ([entry]) => {
+                        if (entry.isIntersecting) {
+                            setIsVisible(true);
+                        }
+                    },
+                    {
+                        threshold: 0.2,
+                        rootMargin: '0px 0px -100px 0px'
+                    }
+                );
+
+                if (ref.current) {
+                    observer.observe(ref.current);
+                }
+
+                return () => {
+                    if (ref.current) {
+                        observer.unobserve(ref.current);
+                    }
+                };
+            }, []);
+
+            return [ref, isVisible];
+        };
+
+        // --- Components ---
+
+        // Navigation Bar
+        const Navigation = () => {
+            const [activeSection, setActiveSection] = useState('home');
+            const [scrolled, setScrolled] = useState(false);
+
+            const scrollToSection = (sectionId) => {
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            };
+
+            useEffect(() => {
+                const handleScroll = () => {
+                    setScrolled(window.scrollY > 50);
+
+                    const sections = ['home', 'about', 'experience', 'skills', 'education', 'contact'];
+                    const scrollPosition = window.scrollY + 100;
+
+                    for (const section of sections) {
+                        const element = document.getElementById(section);
+                        if (element) {
+                            const { offsetTop, offsetHeight } = element;
+                            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                                setActiveSection(section);
+                                break;
+                            }
+                        }
+                    }
+                };
+
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            return (
+                <nav className={`nav-bar ${scrolled ? 'scrolled' : ''}`}>
+                    <div className="nav-container">
+                        <div className="nav-brand" onClick={() => scrollToSection('home')} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                            <i className="fa-solid fa-user"></i>
+                            {profileData.profile.name}
+                        </div>
+                        <div className="nav-links">
+                            <a href="#home" className={activeSection === 'home' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}>Home</a>
+                            <a href="#about" className={activeSection === 'about' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}>About</a>
+                            <a href="#experience" className={activeSection === 'experience' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollToSection('experience'); }}>Experience</a>
+                            <a href="#skills" className={activeSection === 'skills' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollToSection('skills'); }}>Skills</a>
+                            <a href="#education" className={activeSection === 'education' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollToSection('education'); }}>Education</a>
+                            <a href="#contact" className={activeSection === 'contact' ? 'active' : ''} onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}>Contact</a>
+                        </div>
+                    </div>
+                </nav>
+            );
+        };
+
+        // Accordion Item Component
+        const AccordionItem = ({ title, subtitle, description, technologies, children, isOpen, onClick, delay }) => {
+            const [ref, isVisible] = useScrollAnimation();
+
+            return (
+                <div
+                    ref={ref}
+                    className={`accordion-item ${isOpen ? 'active' : ''} ${isVisible ? 'animate-in' : ''}`}
+                    style={{ animationDelay: `${delay}s` }}
+                >
+                    <div className="accordion-header" onClick={onClick}>
+                        <div className="accordion-title-group">
+                            <span className="acc-title">{title}</span>
+                            {subtitle && <span className="acc-subtitle">{subtitle}</span>}
+                        </div>
+                        <i className="fa-solid fa-chevron-down acc-icon"></i>
+                    </div>
+                    <div className="accordion-body">
+                        <div className="accordion-content">
+                            {description && <p className="job-description">{description}</p>}
+                            {children}
+                            {technologies && technologies.length > 0 && (
+                                <div className="tech-stack">
+                                    <strong><i className="fa-solid fa-layer-group"></i> Technologies:</strong>
+                                    <div className="tech-tags">
+                                        {technologies.map((tech, i) => (
+                                            <span key={i} className="tech-tag">{tech}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // Contact Card Component - WITHOUT Click Hint
+        const ContactCard = ({ icon, title, value, link, delay, detailIcon }) => {
+            const [isRevealed, setIsRevealed] = useState(false);
+            const [ref, isVisible] = useScrollAnimation();
+
+            return (
+                <div
+                    ref={ref}
+                    className={`contact-card ${isVisible ? 'animate-in' : ''} ${isRevealed ? 'revealed' : ''}`}
+                    style={{ animationDelay: `${delay}s` }}
+                    onClick={() => setIsRevealed(!isRevealed)}
+                >
+                    <div className="contact-icon-wrapper">
+                        <i className={`${icon} contact-icon`}></i>
+                    </div>
+                    <h3 className="contact-title">{title}</h3>
+                    <div className="contact-reveal-wrapper">
+                        <div className="contact-reveal-content">
+                            {link ? (
+                                <a href={link} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+                                    {detailIcon && <i className={`${detailIcon}`} style={{ marginRight: '8px' }}></i>}
+                                    {value}
+                                    <i className="fa-solid fa-arrow-up-right-from-square" style={{ marginLeft: '8px', fontSize: '0.75rem' }}></i>
+                                </a>
+                            ) : (
+                                <span onClick={(e) => e.stopPropagation()}>
+                                    {detailIcon && <i className={`${detailIcon}`} style={{ marginRight: '8px' }}></i>}
+                                    {value}
+                                </span>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // Main Dashboard Component
+        const Dashboard = () => {
+            const [openExpIndex, setOpenExpIndex] = useState(0);
+            const [openSkillIndex, setOpenSkillIndex] = useState(null);
+            const [aboutRef, aboutVisible] = useScrollAnimation();
+            const [expRef, expVisible] = useScrollAnimation();
+            const [skillsRef, skillsVisible] = useScrollAnimation();
+            const [eduRef, eduVisible] = useScrollAnimation();
+            const [contactRef, contactVisible] = useScrollAnimation();
+
+            const toggleExp = (index) => {
+                setOpenExpIndex(openExpIndex === index ? null : index);
+            };
+
+            const toggleSkill = (index) => {
+                setOpenSkillIndex(openSkillIndex === index ? null : index);
+            };
+
+            return (
+                <>
+                    <Navigation />
+
+                    {/* Decorative Background Elements */}
+                    <div className="bg-decoration decoration-1"></div>
+                    <div className="bg-decoration decoration-2"></div>
+                    <div className="bg-decoration decoration-3"></div>
+
+                    {/* Home Section */}
+                    <section id="home" className="full-section hero-section">
+                        <div className="section-container">
+                            <a href={profileData.profile.linkedin} target="_blank" rel="noopener noreferrer" className="hero-badge-link">
+                                <div className="hero-badge">
+                                    <i className="fa-brands fa-linkedin"></i> Available for Opportunities
+                                </div>
+                            </a>
+                            <h1 className="hero-title">Hi, I'm <span className="highlight">{profileData.profile.name}</span></h1>
+                            <p className="hero-subtitle">{profileData.profile.role}</p>
+                            <p className="hero-location"><i className="fa-solid fa-location-dot"></i> {profileData.profile.location}</p>
+                            <div className="hero-actions">
+                                <a href="#contact" className="btn-primary" onClick={(e) => { e.preventDefault(); document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }); }}>
+                                    <span>Get In Touch</span>
+                                    <i className="fa-solid fa-arrow-right"></i>
+                                </a>
+                                <a href={profileData.profile.cvLink} target="_blank" className="btn-secondary">
+                                    <i className="fa-solid fa-file-pdf"></i>
+                                    <span>View Resume</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div className="scroll-indicator">
+                            <div className="scroll-mouse"></div>
+                            <span>Scroll to explore</span>
+                        </div>
+                    </section>
+
+                    {/* About Section */}
+                    <section id="about" className="full-section">
+                        <div className="section-container">
+                            <div ref={aboutRef} className={`section-header ${aboutVisible ? 'animate-in' : ''}`}>
+                                <h2 className="section-heading">
+                                    <i className="fa-solid fa-user"></i>
+                                    About Me
+                                </h2>
+                            </div>
+                            <p className={`about-text ${aboutVisible ? 'animate-in delay-1' : ''}`}>{profileData.summary}</p>
+                        </div>
+                    </section>
+
+                    {/* Experience Section */}
+                    <section id="experience" className="full-section alt-bg">
+                        <div className="section-container">
+                            <div ref={expRef} className={`section-header ${expVisible ? 'animate-in' : ''}`}>
+                                <h2 className="section-heading">
+                                    <i className="fa-solid fa-gears"></i>
+                                    Professional Experience
+                                </h2>
+                            </div>
+                            <div className="content-wrapper">
+                                {profileData.experience.map((job, index) => (
+                                    <AccordionItem
+                                        key={index}
+                                        title={job.role}
+                                        subtitle={`${job.company} | ${job.period}`}
+                                        description={job.description}
+                                        technologies={job.technologies}
+                                        isOpen={openExpIndex === index}
+                                        onClick={() => toggleExp(index)}
+                                        delay={index * 0.1}
+                                    >
+                                        <div className="job-location"><i className="fa-solid fa-map-marker-alt"></i> {job.location}</div>
+                                        <ul className="highlights-list">
+                                            {job.highlights.map((highlight, i) => (
+                                                <li key={i}>{highlight}</li>
+                                            ))}
+                                        </ul>
+                                    </AccordionItem>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Skills Section */}
+                    <section id="skills" className="full-section">
+                        <div className="section-container">
+                            <div ref={skillsRef} className={`section-header ${skillsVisible ? 'animate-in' : ''}`}>
+                                <h2 className="section-heading">
+                                    <i className="fa-solid fa-code"></i>
+                                    Skills & Expertise
+                                </h2>
+                            </div>
+                            <div className="content-wrapper">
+                                {profileData.skills.map((skill, index) => (
+                                    <AccordionItem
+                                        key={index}
+                                        title={skill.category}
+                                        isOpen={openSkillIndex === index}
+                                        onClick={() => toggleSkill(index)}
+                                        delay={index * 0.1}
+                                    >
+                                        <div className="skills-tags">
+                                            {skill.items.map((item, i) => (
+                                                <span key={i} className="skill-tag" style={{ animationDelay: `${i * 0.05}s` }}>{item}</span>
+                                            ))}
+                                        </div>
+                                    </AccordionItem>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Education Section */}
+                    <section id="education" className="full-section alt-bg">
+                        <div className="section-container">
+                            <div ref={eduRef} className={`section-header ${eduVisible ? 'animate-in' : ''}`}>
+                                <h2 className="section-heading">
+                                    <i className="fa-solid fa-user-graduate"></i>
+                                    Education
+                                </h2>
+                            </div>
+                            <div className="content-wrapper">
+                                {profileData.education.map((edu, index) => (
+                                    <div key={index} className={`education-item ${eduVisible ? 'animate-in' : ''}`} style={{ animationDelay: `${index * 0.2}s` }}>
+                                        <div className="edu-degree">{edu.degree}</div>
+                                        <div className="edu-field">{edu.field}</div>
+                                        <div className="edu-school">{edu.school}</div>
+                                        <div className="edu-meta">
+                                            <span><i className="fa-solid fa-location-dot"></i> {edu.location}</span>
+                                            <span className="separator">•</span>
+                                            <span><i className="fa-solid fa-calendar"></i> {edu.year}</span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Contact Section */}
+                    <section id="contact" className="full-section contact-section">
+                        <div className="section-container">
+                            <div ref={contactRef} className={`section-header ${contactVisible ? 'animate-in' : ''}`}>
+                                <h2 className="section-heading">
+                                    <i className="fa-solid fa-envelope"></i>
+                                    Get In Touch
+                                </h2>
+                            </div>
+                            <div className="contact-grid">
+                                <ContactCard
+                                    icon="fa-solid fa-envelope"
+                                    title="Email"
+                                    value={profileData.profile.email}
+                                    link={`mailto:${profileData.profile.email}`}
+                                    delay={0.1}
+                                    detailIcon="fa-brands fa-google"
+                                />
+                                <ContactCard
+                                    icon="fa-solid fa-phone"
+                                    title="Phone"
+                                    value={profileData.profile.phone}
+                                    link={`tel:${profileData.profile.phone}`}
+                                    delay={0.2}
+                                    detailIcon="fa-solid fa-phone"
+                                />
+                                <ContactCard
+                                    icon="fa-brands fa-linkedin"
+                                    title="LinkedIn"
+                                    value="Connect on LinkedIn"
+                                    link={profileData.profile.linkedin}
+                                    delay={0.3}
+                                    detailIcon="fa-brands fa-linkedin"
+                                />
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Footer */}
+                    <footer className="footer">
+                        <p>© {new Date().getFullYear()} {profileData.profile.name}. All rights reserved.</p>
+                    </footer>
+                </>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Dashboard />);
+    </script>
+</body>
+
+</html>
