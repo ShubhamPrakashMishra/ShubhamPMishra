@@ -39,7 +39,7 @@
                 email: "shubham24prakash@gmail.com",
                 phone: "(+39) 3444845951",
                 linkedin: "https://www.linkedin.com/in/shubham-mishra-11732639a/",
-                cvLink: "#"
+                cvLink: "./resume.html"  // ← FIXED: Changed from "#" to "./resume.html"
             },
             summary: "Passionate Automation and Systems Engineering professional with extensive experience across Automotive, Mechatronics,Software Areas. Currently pursuing a Research approach on exploring Agile Scrum with a MBSE and system agility for mechatronic development of Robot Prototype. Skilled in System Engineering, Agile/Scrum/MBSE Planning, JavaScript, Python, System Engineering Tools,  MATLAB/Simulink, SQL, and Agile frameworks. Committed to creating adaptive, high-reliability systems that connect System engineering with innovation and development Pace of evolving Industry.",
             skills: [
@@ -293,7 +293,7 @@
             );
         };
 
-        // Contact Card Component - WITHOUT Click Hint
+        // Contact Card Component
         const ContactCard = ({ icon, title, value, link, delay, detailIcon }) => {
             const [isRevealed, setIsRevealed] = useState(false);
             const [ref, isVisible] = useScrollAnimation();
@@ -347,6 +347,12 @@
                 setOpenSkillIndex(openSkillIndex === index ? null : index);
             };
 
+            // Function to handle resume click
+            const handleResumeClick = (e) => {
+                e.preventDefault();
+                window.open('./resume.html', '_blank');
+            };
+
             return (
                 <>
                     <Navigation />
@@ -372,7 +378,14 @@
                                     <span>Get In Touch</span>
                                     <i className="fa-solid fa-arrow-right"></i>
                                 </a>
-                                <a href={profileData.profile.cvLink} target="_blank" className="btn-secondary">
+                                {/* FIXED: Resume button now uses profileData.profile.cvLink */}
+                                <a 
+                                    href={profileData.profile.cvLink} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="btn-secondary"
+                                    onClick={handleResumeClick}
+                                >
                                     <i className="fa-solid fa-file-pdf"></i>
                                     <span>View Resume</span>
                                 </a>
